@@ -12,7 +12,7 @@
   <body>
     <% if user_signed_in? %>
       <li>
-        Home
+        Homes
       </li>
       <li>
         <%= link_to "Users", users_path %>
@@ -25,10 +25,10 @@
       </li>
     <% else %>
       <li>
-        Home
+        <%= link_to "Homes", root_path %>
       </li>
       <li>
-        About
+        <%= link_to "About", homes_about_path %>
       </li>
       <li>
         <%= link_to "sin up", new_user_registration_path %>

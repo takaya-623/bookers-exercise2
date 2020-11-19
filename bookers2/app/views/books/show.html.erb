@@ -1,5 +1,6 @@
 <h1>User info</h1>
 
+  
 <div>
   <h1>New book</h1>
   <%= form_with model: @Book, local:true do |f |%>
@@ -15,7 +16,7 @@
 <table>
     <tbody class="table">
       <tr>
-        <td>投稿ユーザー画像※後で追加</td>
+        <td><%= attachment_image_tag @book.user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %></td>
         <td><%= @book.title %></td>
         <td><%= @book.body %></td>
         <% if @book.user == current_user %>
@@ -25,4 +26,5 @@
       </tr>
     </tbody>
 </table>
+
 
