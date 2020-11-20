@@ -1,3 +1,16 @@
+<% if @user.errors.any? %>
+  <div class="error_explanation">
+    <div class="error_head">
+    <h2 class="error_head_text"><%= pluralize(@user.errors.count, "error") %> prohibited this book from being saved:</h2>
+    </div>
+    <ul class="error_message">
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div>
   <h1>User info</h1>
   <%= form_with model:@user, local:true do |f| %>
