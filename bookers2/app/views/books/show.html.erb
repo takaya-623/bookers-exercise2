@@ -1,39 +1,56 @@
 <p class="notice"><%= notice %></p>
 
-<div>
-  <h1>User info</h1>
-  <%= attachment_image_tag @book.user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
-  <p>name <%= @book.user.name %></p>
-  <p>introduction <%=@book.user.body %></p>
-    <% if @book.user == current_user %>
-      <p><%= link_to "プロフィール編集", edit_user_path(@book.user) %></p>
-    <% end %>
-</div>
-
-<div>
-  <h1>New book</h1>
-  <%= form_with model: @Book, local:true do |f |%>
-    <h4>Tile</h4>
-    <%= f.text_field :title %>
-    <h4>Opinion</h4>
-    <%= f.text_area :body %>
-    <p><%= f.submit 'Create Book' %></p>
-  <% end %>
-</div>
-
-<h1>Book detail</h1>
-<table>
-    <tbody class="table">
-      <tr>
-        <td><%= attachment_image_tag @book.user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %></td>
-        <td><%= @book.title %></td>
-        <td><%= @book.body %></td>
-        <% if @book.user == current_user %>
-        <td><%=link_to 'Edit', edit_book_path(@book) %></td>
-        <td><%=link_to 'Destroy', book_path(@book), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <h1>User info</h1>
+      <%= attachment_image_tag @book.user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+      <table class="table">
+        <tr>
+          <th>name</th> 
+          <th><%= @book.user.name %></th>
+        </tr>
+        <tr>
+          <th>introduction</th>
+          <th><%=@book.user.body %></th>
+        </tr>
+      </table>
+      <% if @book.user == current_user %>
+        <%= link_to edit_user_path(@book.user), method: :get do %>
+          <i class="btn btn-outline-secondary btn-block fas fa-user-cog mb-4"></i>
         <% end %>
-      </tr>
-    </tbody>
-</table>
+      <% end %>
+    
+      <h1>New book</h1>
+      <%= form_with model: @Book, local:true do |f |%>
+        <p>Tile</p>
+        <%= f.text_field :title, class: 'w-100 mb-2' %>
+        <p>Opinion</p>
+        <%= f.text_area :body, class: 'w-100 mb-2' %>
+        <p><%= f.submit 'Create Book', class: 'create' %></p>
+      <% end %>
+    </div>
+    
+    <div class="col-md-8 offset-md-1">
+      <h1>Book detail</h1>
+      <table>
+          <tbody class="table">
+            <tr>
+              <td>
+                <%= attachment_image_tag @book.user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %>
+                <br><%= link_to @book.user.name, user_path(@book.user.id) %>
+              </td>
+              <td><%= link_to @book.title, book_path(@book.id) %></td>
+              <td><%= @book.body %></td>
+              <% if @book.user == current_user %>
+              <td><%=link_to 'Edit', edit_book_path(@book), class: 'btn btn-success' %></td>
+              <td><%=link_to 'Destroy', book_path(@book), class: 'btn btn-danger', method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+              <% end %>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
 

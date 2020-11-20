@@ -1,41 +1,55 @@
-<div>
-  <h1>User info</h1>
-  <%= attachment_image_tag current_user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
-  <p>name <%= current_user.name %></p>
-  <p>introduction <%=current_user.body %></p>
-    <% if current_user %>
-      <p><%= link_to "プロフィール編集", edit_user_path(current_user) %></p>
-    <% end %>
-</div>
 
-<div>
-  <h1>New book</h1>
-  <%= form_with model: @book, local:true do |f |%>
-    <h4>Tile</h4>
-    <%= f.text_field :title %>
-    <h4>Opinion</h4>
-    <%= f.text_area :body %>
-    <p><%= f.submit 'Create Book' %></p>
-  <% end %>
-</div>
-<div>
-  <h1>Users</h1>
-  <table class="table table-hover table-inverse">
-    <thead>
-      <tr>
-        <th>image</th>
-        <th>name</th>
-        <th></th>
-      </tr>
-    </thead>
-    <% @users.each do |user| %>
-      <tbody>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-3">
+      <h1>User info</h1>
+      <%= attachment_image_tag current_user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+      <table class="table">
         <tr>
-          <td><%= attachment_image_tag user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %></td>
-          <td><%= user.name %></td>
-          <td><%= link_to 'Show', user_path(user.id) %></td>
+          <th>name</th> 
+          <th><%= current_user.name %></th>
         </tr>
-      </tbody>
-    <% end %>
-  </table>
+        <tr>
+          <th>introduction</th>
+          <th><%=current_user.body %></th>
+        </tr>
+      </table>      
+        <% if current_user %>
+          <%= link_to edit_user_path(current_user), method: :get do %>
+            <i class="btn btn-outline-secondary btn-block fas fa-user-cog mb-4"></i>
+          <% end %>
+        <% end %>
+        
+      <h1>New book</h1>
+      <%= form_with model: @book, local:true do |f |%>
+        <p>Tile</p>
+        <%= f.text_field :title, class: 'w-100 mb-2' %>
+        <p>Opinion</p>
+        <%= f.text_area :body, class: 'w-100 mb-2' %>
+        <p><%= f.submit 'Create Book', class: 'create' %></p>
+      <% end %>
+    </div>
+    
+    <div class="col-md-8 offset-md-1">
+      <h1>Users</h1>
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th>image</th>
+            <th>name</th>
+            <th></th>
+          </tr>
+        </thead>
+        <% @users.each do |user| %>
+          <tbody>
+            <tr>
+              <td><%= attachment_image_tag user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %></td>
+              <td><%= user.name %></td>
+              <td><%= link_to 'Show', user_path(user.id) %></td>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
 </div>
