@@ -22,7 +22,7 @@
             <p><label for="inputImage">Image</label></p>
             <p><%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %></p>
             <p><label for="inputIntroduction">Introduction</label></p>
-            <p><%= f.text_area :body, class: 'w-100 mb-2' %></p>
+            <p><%= f.text_area :introduction, class: 'w-100 mb-2' %></p>
             <p><%= f.submit "Update User", class: 'create' %></p>
           <% end %>
     </div>

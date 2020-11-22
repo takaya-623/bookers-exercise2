@@ -36,6 +36,10 @@ footer > p {
   margin-top: 30px;
 }
 
+
+
+
+
 // ログイン、登録、パスワード確認ページのボタン
 .log_in input[type="submit"] {
   color: #fff;
@@ -79,9 +83,9 @@ input[value="Sign up"] {
   border-radius: 3px;
 }
 
+// エラーメッセージ
 .error_explanation {
   width: 450px;
-  height: 130px;
   border: solid 2px red;
   margin-bottom: 30px;
   background-color: #f0f0f0;
@@ -102,7 +106,7 @@ input[value="Sign up"] {
 }
 
 li {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .field_with_errors input {
@@ -119,9 +123,20 @@ li {
   background-color: red;
 }
 
-
+// 処理メッセージ
 .notice {
   margin-left: 30px;
   margin-right: 30px;
   color: green;
+  
+  animation: move 3s linear 0.5s;
+}
+
+@keyframes move {
+  0% {
+    transform: none;
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
