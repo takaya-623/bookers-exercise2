@@ -5,7 +5,6 @@
     <div class="col-md-3">
       <h2>User info</h2>
       <%= render "show_user_info", info: @book.user %>
-
     
       <h2>New book</h2>
         <%= render "users/form", obj: @Book %>
@@ -45,11 +44,13 @@
                 <%= link_to book_comment.user.name, user_path(book_comment.user.id) %>
               </td>
                 <td><%= book_comment.comment %></td>
-                <td><%=link_to 'Destroy', book_book_comment_path(book_comment.book, book_comment), class: 'btn btn-danger', method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
-            </tr>
-          </tbody>
+                <% if book_comment.user == current_user %>
+                  <td><%=link_to 'Destroy', book_book_comment_path(book_comment.book, book_comment), class: 'btn btn-danger', method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+                <% end %>
+            <tbody>
         <% end %>
       </table>
+      
         <%= form_with(model:[@book, @book_comment], local: true) do |f| %>
           <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %><br>
           <%= f.submit "送信" %>
