@@ -1,0 +1,14 @@
+<%= attachment_image_tag info, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+<table class="table">
+  <tr>
+    <th>name</th> 
+    <th><%= info.name %></th>
+  </tr>
+  <tr>
+    <th>introduction</th>
+    <th><%= info.introduction %></th>
+  </tr>
+</table>
+  <%= link_to edit_user_path(info), method: :get do %>
+    <i class="btn btn-outline-secondary btn-block fas fa-user-cog mb-4"></i>
+  <% end %>
