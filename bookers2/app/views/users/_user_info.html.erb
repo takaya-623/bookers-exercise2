@@ -10,13 +10,14 @@
   </tr>
   <tr>
     <th>follows</th>
-    <th><%= link_to current_user.following.count, '' %></th>
+    <th><%= link_to current_user.following.count, user_followings_path(current_user) %></th>
   </tr>
     <th>followers</th>
-    <th><%= link_to current_user.followers.count, '' %></th>
+    <th><%= link_to current_user.followers.count, user_followers_path(current_user) %></th>
 </table>      
   <% if current_user %>
     <%= link_to edit_user_path(current_user), method: :get do %>
       <i class="btn btn-outline-secondary btn-block fas fa-user-cog mb-4"></i>
     <% end %>
   <% end %>
+  
