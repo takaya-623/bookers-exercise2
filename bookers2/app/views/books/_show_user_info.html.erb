@@ -8,6 +8,12 @@
     <th>introduction</th>
     <th><%= info.introduction %></th>
   </tr>
+  <tr>
+    <th>follows</th>
+    <th><%= link_to info.following.count, '' %></th>
+  </tr>
+    <th>follows</th>
+    <th><%= link_to info.followers.count, '' %></th>
 </table>
   <%= link_to edit_user_path(info), method: :get do %>
     <i class="btn btn-outline-secondary btn-block fas fa-user-cog mb-4"></i>

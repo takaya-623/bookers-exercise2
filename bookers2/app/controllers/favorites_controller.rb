@@ -13,6 +13,5 @@ class FavoritesController < ApplicationController
     # favorite = current_user
     favorite.destroy
     redirect_to request.referrer || root_path
-    
   end
 end
