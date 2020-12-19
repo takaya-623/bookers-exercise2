@@ -15,9 +15,14 @@
     <th>followers</th>
     <th><%= link_to info.followers.count, user_followers_path(info) %></th>
 </table>
+
+  
+<% if info == current_user %>
   <%= link_to edit_user_path(info), method: :get do %>
     <i class="btn btn-outline-secondary btn-block fas fa-user-cog mb-4"></i>
   <% end %>
+<% end %>
+  
   
 <% unless info == current_user %>
   <% if current_user.following?(info) %>

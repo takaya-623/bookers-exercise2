@@ -7,7 +7,7 @@ class BookCommentsController < ApplicationController
     if @comment.save
      redirect_to request.referrer || root_path
     else
-      # render '/books/show'
+      render '/books/show'
     end
   end
   
