@@ -1,25 +1,29 @@
-<div class="col-md-10">
-  <h2>Users</h2>
-  <table class="table table-inverse">
-    <thead>
-      <tr>
-        <th>image</th>
-        <th>name</th>
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-    <% @followers.each do |follower| %>
-      <tbody>
-        <tr>
-          <td><%= attachment_image_tag follower, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: '60x60' %></td>
-          <td><%= follower.name %></td>
-          <td>フォロー数: <%= follower.following.count %></td>
-          <td>フォロワー数: <%= follower.followers.count %></td>
-          <td><%= link_to 'Show', user_path(follower.id) %></td>
-        </tr>
-      </tbody>
-    <% end %>
-  </table>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-10 offset-md-1">
+      <h2>Users</h2>
+      <table class="table table-inverse">
+        <thead>
+          <tr>
+            <th>image</th>
+            <th>name</th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <% @followers.each do |follower| %>
+          <tbody>
+            <tr>
+              <td><%= attachment_image_tag follower, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: '60x60' %></td>
+              <td><%= follower.name %></td>
+              <td>フォロー数: <%= follower.following.count %></td>
+              <td>フォロワー数: <%= follower.followers.count %></td>
+              <td><%= link_to 'Show', user_path(follower.id) %></td>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
 </div>
