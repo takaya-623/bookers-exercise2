@@ -8,9 +8,9 @@
       <th></th>
     </tr>
   </thead>
-  <% @books.each do |book| %>
+  <% books.each do |book| %>
     <tbody>
-      <tr>
+      <tr class="<%= book.id %>">
         <td>
           <%= link_to user_path(book.user) do %>
             <%= attachment_image_tag book.user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: '60x60' %>
@@ -19,7 +19,7 @@
         <td><%= link_to book.title, book_path(book.id) %></td>
         <td><%= book.body %></td>
         
-        <%= render "favorite", obj: book %>
+        <td class="favorite_btn"><%= render "favorites/favorite", obj: book %></td>
         
         <td>コメント数:<%=book.book_comments.count %></td>
       </tr>
