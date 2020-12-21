@@ -12,7 +12,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    NotificationMailer.complete_mail(@user).deliver_now
+    NotificationMailer.complete_mail(resource).deliver_now
+    # binding.pry
   end
 
   # GET /resource/edit
