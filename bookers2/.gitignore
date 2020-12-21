@@ -32,4 +32,4 @@
 
 # メイラー用のgmailアカウント情報
 /config/initializers/mail_config.rb
-/app/mailers
+/app/mailers/notification_mailer.rb
