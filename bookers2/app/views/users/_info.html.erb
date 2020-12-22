@@ -26,8 +26,12 @@
   
 <% unless info == current_user %>
   <% if current_user.following?(info) %>
-    <%= link_to 'フォロー外す', user_relationships_path(info), class: 'btn btn-danger', method: :delete %>
+    <%= link_to 'フォロー', user_relationships_path(info), class: 'btn btn-success form-control', method: :delete %>
   <% else %>
-    <%= link_to 'フォローする', user_relationships_path(info), class: 'btn btn-success', method: :post %>
+    <%= link_to 'フォロー解除', user_relationships_path(info), class: 'btn btn-danger form-control', method: :post %>
   <% end %>
+<% end %>
+<br>
+<% if current_user != info %>
+  <%= link_to 'DM', chat_path(info.id), class: "btn btn-info mt-2 m form-control" %>
 <% end %>

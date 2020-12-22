@@ -1,0 +1,36 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-10 offset-md-1">
+      <div class="message">
+        <h2 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>" class="border-bottom border-secondary"><%= @user.name %> さんとのチャット</h2>
+        <% @chats.each do |chat| %>
+          <% if chat.user_id == current_user.id %>
+            <p style="text-align: right;">
+              <%= chat.message %>
+              <%= attachment_image_tag chat.user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: '60x60' %>
+            </p>
+          <% else %>
+            <p style="text-align: left;">
+              <%= attachment_image_tag chat.user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: '60x60' %>
+              <%= chat.message %>
+            </p>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= form_with model: @chat do |f| %>
+<div class='container mt-3'>
+  <div class='row'>
+    <div class="col-md-10 col-sm-10 offset-md-1">
+      <%= f.text_field :message, class: 'form-control form-control-lg' %>
+      <%= f.hidden_field :room_id %>
+    </div>
+    <div class="col-md-1 col-sm-1">
+      <%= f.submit '送信', class: 'btn btn-dark ml-0 mt-1' %>
+    </div>
+  </div>
+</div>
+<% end %>

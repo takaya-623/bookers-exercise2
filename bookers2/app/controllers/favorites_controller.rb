@@ -3,7 +3,7 @@ class FavoritesController < ApplicationController
     @book = Book.find(params[:book_id])
     favorite = current_user.favorites.new(book_id: @book.id)
     favorite.save
-    # redirect_to request.referrer || root_path
+    # 非同期通信
   end
   
   def destroy
@@ -12,6 +12,6 @@ class FavoritesController < ApplicationController
     # favorite = Favorite.new(book_id: book.id)
     # favorite = current_user
     favorite.destroy
-    # redirect_to request.referrer || root_path
+    # 非同期通信
   end
 end

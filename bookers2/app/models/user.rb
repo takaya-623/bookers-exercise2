@@ -14,6 +14,10 @@ class User < ApplicationRecord
   has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   
+  has_many :user_rooms
+  has_many :chats
+  has_many :rooms, through: :user_rooms
+  
   attachment :profile_image
   
   validates :name, uniqueness: true, length: { in: 2..20 }
