@@ -4,11 +4,8 @@ class BookCommentsController < ApplicationController
     @book = Book.find(params[:book_id])
     @comment = current_user.book_comments.new(book_comment_params)
     @comment.book_id = @book.id
-    if @comment.save
-    #非同期通信
-    else
-      render '/books/show'
-    end
+    @comment.save
+      # render 'error'
   end
   
   def destroy

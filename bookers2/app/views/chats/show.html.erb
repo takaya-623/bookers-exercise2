@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-10 offset-md-1">
       <div class="message">
-        <h2 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>" class="border-bottom border-secondary"><%= @user.name %> さんとのチャット</h2>
+        <h2 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>" class="border-bottom border-secondary"><%= @user.name %></h2>
         <% @chats.each do |chat| %>
           <% if chat.user_id == current_user.id %>
             <p style="text-align: right;">

@@ -1,3 +1,4 @@
 $(".comment_form textarea").val("");
 $(".comment_form input").val("");
+$("#error_box").html("<%= escape_javascript(render 'layouts/errors', obj: @comment) %>");
 $(".comments").html("<%= escape_javascript(render 'comments', book: @book) %>");

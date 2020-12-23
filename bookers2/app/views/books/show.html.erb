@@ -32,12 +32,16 @@
             </tr>
           </tbody>
       </table>
+      <h2>Review</h2>
       <table class="comments">
         <%= render 'book_comments/comments', book: @book %>
       </table>
-        <%= form_with(model:[@book, @book_comment], remote: true, class: 'comment_form') do |f| %>
+      <div id="error_box">
+        <%= render 'layouts/errors', obj: @comment %>
+      </div>
+        <%= form_with(model:[@book, @comment], remote: true, class: 'comment_form') do |f| %>
           <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %><br>
-          <%= f.submit "送信" %>
+          <%= f.submit "送信", class: 'btn btn-dark' %>
         <% end %>
     </div>
   </div>
